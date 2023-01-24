@@ -12,5 +12,9 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="actionOverflowButtonStyle">@style/threedotcolor</item>
+    </style>
+    <style name="threedotcolor" parent="Widget.AppCompat.ActionButton.Overflow">
+        <item name="tint">@color/white</item>
     </style>
 </resources>
