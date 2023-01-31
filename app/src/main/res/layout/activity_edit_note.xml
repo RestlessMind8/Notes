@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditNote">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:background="@color/purple">
+
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp"
+                android:maxLines="1"
+                android:ellipsize="end"
+                android:layout_marginEnd="40dp"
+                android:layout_centerVertical="true"
+                android:textColor="@color/white"
+                android:visibility="invisible"
+                />
+
+            <EditText
+                android:id="@+id/inputTitle"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="50dp"
+                android:background="@color/white"
+                android:ellipsize="end"
+                android:inputType="text"
+                android:maxLines="1"
+                android:text=""
+                android:textColor="@color/black"
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            <ImageView
+                android:id="@+id/editTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_edit_24"
+                android:layout_marginEnd="10dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:visibility="invisible"
+                app:tint="@color/white" />
+            <FrameLayout
+                android:id="@+id/colorPicker"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true"
+                android:background="@color/white"
+                android:layout_marginEnd="10dp"
+                />
+        </RelativeLayout>
+    </androidx.appcompat.widget.Toolbar>
+
+    <TextView
+        android:id="@+id/editing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Editando"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/gray"
+        android:textSize="15sp"
+        />
+    <TextView
+        android:id="@+id/lastEditInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="27/01/23 11:02"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginStart="5dp"
+        android:textColor="@color/gray"
+        android:layout_marginEnd="5dp"
+        android:layout_alignParentEnd="true"
+        android:textSize="15sp"
+        />
+
+    <MultiAutoCompleteTextView
+        android:id="@+id/multiAutoCompleteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editing"
+        android:backgroundTint="@color/white"
+        android:gravity="top|left"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        tools:ignore="SpeakableTextPresentCheck"
+        />
+
+
+</RelativeLayout>
