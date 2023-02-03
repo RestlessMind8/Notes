@@ -7,13 +7,14 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import com.notes.notes.databinding.ActivityEditNoteBinding
-import yuku.ambilwarna.AmbilWarnaDialog
+import com.notes.notes.model.BottomSheetInterface
 
 
-class EditNote : AppCompatActivity() {
+class EditNote : AppCompatActivity(), BottomSheetInterface {
     private lateinit var binding: ActivityEditNoteBinding
     private var editing : Boolean = true
-    private var mRootLayoutBgColor: Int = Color.WHITE
+    private lateinit var bottomSheetFragment : BottomSheetFragment
+    private lateinit var callback: BottomSheetInterface
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,6 +25,10 @@ class EditNote : AppCompatActivity() {
         this.binding = ActivityEditNoteBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        callback = this
+        this.bottomSheetFragment = BottomSheetFragment(callback)
+
+
         binding.editTitle.setOnClickListener {
             edit()
         }
@@ -32,7 +37,7 @@ class EditNote : AppCompatActivity() {
         }
 
         binding.colorPicker.setOnClickListener{
-            openColorPicker()
+            bottomSheetFragment.show(supportFragmentManager, "BottomSheetDialog")
         }
 
         binding.multiAutoCompleteTextView.setOnClickListener{
@@ -45,28 +50,18 @@ class EditNote : AppCompatActivity() {
 
     override fun onBackPressed() {
         if(editing){
-            Toast.makeText(this, "Salvo.", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Salvo", Toast.LENGTH_SHORT).show()
             edit()
         }else{
             super.onBackPressed()
         }
     }
 
-    private fun openColorPicker() {
-        //Create color picker dialog
-        val ambilWarnaDialog =
-            AmbilWarnaDialog(this, mRootLayoutBgColor, object :
-                AmbilWarnaDialog.OnAmbilWarnaListener {
-                override fun onCancel(dialog: AmbilWarnaDialog) {}
-                override fun onOk(dialog: AmbilWarnaDialog, color: Int) {
-                    mRootLayoutBgColor = color
-                    //Set root layout background color
-                    binding.colorPicker.setBackgroundColor(mRootLayoutBgColor)
-                }
-            })
-        //show color picker dialog
-        ambilWarnaDialog.show()
+
+    override fun callbackMethod(color: String) {
+        binding.colorPicker.setBackgroundColor(Color.parseColor(color))
     }
+
 
     private fun edit() {
         var str: String
