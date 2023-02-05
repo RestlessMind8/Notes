@@ -17,7 +17,6 @@
             android:background="@drawable/circle_shape"
             android:backgroundTint="@color/black"
             android:layout_gravity="center_vertical"
-
             />
         <FrameLayout
             android:id="@+id/whiteColor"

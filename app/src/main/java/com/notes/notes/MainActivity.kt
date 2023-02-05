@@ -5,10 +5,17 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.result.contract.ActivityResultContracts
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     private lateinit var floatingButton: FloatingActionButton
+
+    private val getAction = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if(it.resultCode == 0){
+//            chatAdapter.notifyDataSetChanged()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +28,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun openEditNoteActivity(){
+    private fun openEditNoteActivity(){
         val intent = Intent(this, EditNote::class.java)
-        startActivity(intent)
+        intent.putExtra("noteCode", -1)
+        getAction.launch(intent)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
