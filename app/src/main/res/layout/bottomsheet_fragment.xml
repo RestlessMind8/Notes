@@ -19,12 +19,12 @@
             android:layout_gravity="center_vertical"
             />
         <FrameLayout
-            android:id="@+id/whiteColor"
+            android:id="@+id/orangeColor"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:background="@drawable/circle_shape"
-            android:backgroundTint="@color/white"
+            android:backgroundTint="@color/orange"
             android:layout_gravity="center_vertical"
             android:backgroundTintMode="multiply"
             />

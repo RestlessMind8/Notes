@@ -1,9 +1,14 @@
 package com.notes.notes.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "note_table")
 data class Note(
-    val code: Long,
+    @PrimaryKey
+    val code: Int,
     var title: String,
-    val text: String,
+    var text: String,
     var lastUpdate: String,
     var color: String
 )

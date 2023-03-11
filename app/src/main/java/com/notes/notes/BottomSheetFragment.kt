@@ -27,8 +27,8 @@ class BottomSheetFragment(val callback: BottomSheetInterface): BottomSheetDialog
             setColor("#000000")
         }
 
-        binding.whiteColor.setOnClickListener{
-            setColor("#FFFFFF")
+        binding.orangeColor.setOnClickListener{
+            setColor("#FF6700")
         }
 
         binding.redColor.setOnClickListener{
